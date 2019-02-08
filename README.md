@@ -11,6 +11,6 @@
 
 # How to exit
 - run ps -eo pid,comm | grep ngrok
-- The pid of processes is the second column
+- The pid of processes is the first column
 - run kill pid
 - pid can be a list of pids seperated by a space

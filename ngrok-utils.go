@@ -9,7 +9,7 @@ import (
 )
 
 func checkIfNgrokRunning() (bool, string){
-	cmd := "ps -eo pid,comm | grep -E '$ngrok^"
+	cmd := "ps -eo pid,comm | grep -E 'ngrok$'"
 	out := runCmd(cmd)
 	result := strings.Fields(string(out))
 	if len(result) < 2 {
@@ -37,7 +37,7 @@ func stopNgrok(id string, s *discordgo.Session){
 }
 
 func getNgrokPort(id string, s *discordgo.Session) {
-	if running, _ := checkIfNgrokRunning(); running{
+	if running, _ := checkIfNgrokRunning(); !running{
 		startNgrok(id, s)
 	}
 	cmd := `curl -s http://127.0.0.1:4040/inspect/http | grep -oE 'tcp://0.tcp.eu.ngrok.io:[0-9]{4,6}' | grep -Eo '[0-9]{4,6}'`
