@@ -10,7 +10,7 @@
 - run ./start-ngrok-bot-background
 
 # How to exit
-- run ps aux | grep ngrok
+- run ps -eo pid,comm | grep ngrok
 - The pid of processes is the second column
 - run kill pid
 - pid can be a list of pids seperated by a space

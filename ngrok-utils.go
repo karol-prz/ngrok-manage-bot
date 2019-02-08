@@ -9,7 +9,7 @@ import (
 )
 
 func checkIfNgrokRunning() (bool, string){
-	cmd := "ps -eo pid,comm | grep ngrok | grep tcp"
+	cmd := "ps -eo pid,comm | grep -E '$ngrok^"
 	out := runCmd(cmd)
 	result := strings.Fields(string(out))
 	if len(result) < 2 {
